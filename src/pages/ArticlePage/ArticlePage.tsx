@@ -21,19 +21,19 @@ export const ArticlePage: React.FC<{}> = () => {
       {articalDetails.map(({ title, summary, imageUrl, id }) => {
         return (
           <div
-            className={styled.ArticlePage}
+            className={styled.articlePage}
             style={{ backgroundImage: `url(${imageUrl})` }}
             key={id}
           >
             <Container>
-              <div className={styled.ArticleWrapper}>
-                <h1 className={styled.ArticleTitle}>{title}</h1>
-                <p className={styled.ArticleText}>{summary}</p>
+              <div className={styled.articleWrapper}>
+                <h1 className={styled.articleTitle}>{title}</h1>
+                <p className={styled.articleText}>{summary}</p>
               </div>
               <Link to="/">
-                <div className={styled.ArticleGoBackWrapper}>
-                  <Arrow className={styled.ArticleGoBackIcon} />
-                  <p className={styled.ArticleGoBackText}>Back to homepage</p>
+                <div className={styled.articleGoBackWrapper}>
+                  <Arrow className={styled.articleGoBackIcon} />
+                  <p className={styled.articleGoBackText}>Back to homepage</p>
                 </div>
               </Link>
             </Container>

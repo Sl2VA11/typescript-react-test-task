@@ -93,7 +93,7 @@ transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
-    color: #af5252;
+    color: #d41e1e;
   }
 }
 
@@ -104,8 +104,5 @@ transition-duration: 250ms;
   fill: #363636;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  &:hover,
-  &:focus {
-    fill: #af5252;
-  }
+ 
 }
