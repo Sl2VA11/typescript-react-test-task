@@ -1,0 +1,100 @@
+.articleList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -45px;
+  margin-left: -45px;
+}
+.articleItem {
+  flex-basis: calc(100% / 3 - 45px);
+  margin-top: 45px;
+  margin-left: 45px;
+}
+.articleWrapper {
+  position: relative;
+  height: 100%;
+  border: 1px solid #eaeaea;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.articleImage {
+  display: block;
+  width: 100%;
+}
+.articleDataWrapper {
+  padding: 25px 25px 70px 25px;
+}
+
+.articleData {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.articleCalendarIcon {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+}
+.articleDataValue {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+
+  color: #363636;
+
+  opacity: 0.6;
+}
+
+.articleTitle {
+  font-family: "Montserrat";
+
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.21;
+  margin-bottom: 20px;
+  color: #363636;
+}
+.articleAfterTitle {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+
+  color: #363636;
+}
+.articleReadMoreWrapper {
+  position: absolute;
+
+  bottom: 25px;
+  left: 25px;
+  display: flex;
+  align-items: center;
+}
+.articleReadMore {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-right: 6px;
+  color: #363636;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    color: #af5252;
+  }
+}
+
+.articleReadMoreArrow {
+  width: 12px;
+  height: 10px;
+  cursor: pointer;
+  fill: #363636;
+  &:hover,
+  &:focus {
+    fill: #af5252;
+  }
+}
