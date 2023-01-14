@@ -13,7 +13,8 @@ export const ArticleCard: React.FC<UserText> = (props) => {
   const [articleData, setArticleData] = useState<ArticleItems[]>([]);
   const listRef = useRef<HTMLUListElement>(null);
   const [resultValue, setResultValue] = useState<number>(0);
-
+  const { userText } = props;
+  
   useEffect(() => {
     getArticle()
       .then((res) => {
@@ -32,7 +33,7 @@ export const ArticleCard: React.FC<UserText> = (props) => {
     const quantityItems = listRef.current?.childNodes.length;
 
     setResultValue(Number(quantityItems));
-  }, [props.userText]);
+  }, [userText]);
 
   return (
     <>
@@ -44,12 +45,12 @@ export const ArticleCard: React.FC<UserText> = (props) => {
         />
       )}
       <ul className={styled.articleList} ref={listRef}>
-        {props.userText
+        {userText
           ? articleData
               .sort((a, b) => {
                 let priorityA = 0;
                 let priorityB = 0;
-                const userTextLowerCase = props.userText.toLowerCase();
+                const userTextLowerCase = userText.toLowerCase();
 
                 if (a.title.toLowerCase().includes(userTextLowerCase)) {
                   priorityA = 0;
@@ -70,7 +71,7 @@ export const ArticleCard: React.FC<UserText> = (props) => {
                 return priorityA - priorityB;
               })
               .map(({ id, imageUrl, summary, title, publishedAt }) => {
-                const result = priorityText(title, summary, props.userText);
+                const result = priorityText(title, summary, userText);
 
                 if (result === 0) {
                   return (
@@ -81,7 +82,7 @@ export const ArticleCard: React.FC<UserText> = (props) => {
                       summary={summary}
                       title={title}
                       publishedAt={publishedAt}
-                      userText={props.userText}
+                      userText={userText}
                     />
                   );
                 } else if (result === 1) {
@@ -93,11 +94,11 @@ export const ArticleCard: React.FC<UserText> = (props) => {
                       summary={summary}
                       title={title}
                       publishedAt={publishedAt}
-                      userText={props.userText}
+                      userText={userText}
                     />
                   );
                 }
-                return null
+                return null;
               })
           : articleData.map(({ id, imageUrl, summary, title, publishedAt }) => {
               return (
@@ -108,7 +109,7 @@ export const ArticleCard: React.FC<UserText> = (props) => {
                   summary={summary}
                   title={title}
                   publishedAt={publishedAt}
-                  userText={props.userText}
+                  userText={userText}
                 />
               );
             })}

@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getArticleById } from "../../api/getArticleById";
 import { Container } from "../../components/Container/Container";
 import { ReactComponent as Arrow } from "../../images/icons/arrow.svg";
 import styled from "./ArticlePage.module.scss";
 import { ArticleItems } from "../../types/articleItems";
 
-
 export const ArticlePage: React.FC<{}> = () => {
   const [articalDetails, setArticleDetails] = useState<ArticleItems[]>([]);
-  
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -19,7 +18,7 @@ export const ArticlePage: React.FC<{}> = () => {
 
   return (
     <>
-      {articalDetails.map(({ title, summary, imageUrl,id }) => {
+      {articalDetails.map(({ title, summary, imageUrl, id }) => {
         return (
           <div
             className={styled.ArticlePage}

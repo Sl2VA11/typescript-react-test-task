@@ -16,13 +16,14 @@ interface ArticleItemData {
   title: string;
 }
 export const ArticleCardItem: React.FC<ArticleItemData> = (props) => {
-  let newSummary = props.summary.slice(0, 100);
+  const { summary, userText, id, imageUrl, publishedAt, title } = props;
+  let newSummary = summary.slice(0, 100);
 
   return (
-    <li className={styled.articleItem} key={props.id}>
+    <li className={styled.articleItem} key={id}>
       <div className={styled.articleWrapper}>
         <img
-          src={props.imageUrl}
+          src={imageUrl}
           alt="articleImage"
           width={400}
           height={217}
@@ -32,32 +33,32 @@ export const ArticleCardItem: React.FC<ArticleItemData> = (props) => {
           <div className={styled.articleData}>
             <Calendar className={styled.articleCalendarIcon} />
             <p className={styled.articleDataValue}>
-              {moment(props.publishedAt).format("MMMM Do, YYYY")}
+              {moment(publishedAt).format("MMMM Do, YYYY")}
             </p>
           </div>
 
           <p className={styled.articleTitle}>
             <Highlighter
               highlightClassName="YourHighlightClass"
-              searchWords={[props.userText]}
+              searchWords={[userText]}
               autoEscape={true}
-              textToHighlight={props.title}
+              textToHighlight={title}
             />
           </p>
 
           <p className={styled.articleAfterTitle}>
             <Highlighter
               highlightClassName="YourHighlightClass"
-              searchWords={[props.userText]}
+              searchWords={[userText]}
               autoEscape={true}
               textToHighlight={
-                props.summary.length > 100 ? newSummary : props.summary
+                summary.length > 100 ? newSummary : summary
               }
             />
             ...
           </p>
 
-          <Link to={"/artical/" + props.id}>
+          <Link to={"/artical/" + id}>
             <div className={styled.articleReadMoreWrapper}>
               <p className={styled.articleReadMore}>Read More</p>
               <Arrow className={styled.articleReadMoreArrow} />

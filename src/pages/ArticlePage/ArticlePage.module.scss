@@ -1,6 +1,6 @@
 .ArticlePage {
   background-repeat: no-repeat;
-  background-size: 100% 245px ;
+  background-size: 100% 245px;
   background-position: top;
   padding-top: 150px;
   padding-bottom: 45px;
@@ -43,6 +43,13 @@
   rotate: 180deg;
   margin-right: 6px;
   cursor: pointer;
+  fill: #363636;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    fill: #af5252;
+  }
 }
 .ArticleGoBackText {
   font-family: "Montserrat";
@@ -51,4 +58,10 @@
   line-height: 1.5;
   cursor: pointer;
   color: #363636;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    fill: #af5252;
+  }
 }
