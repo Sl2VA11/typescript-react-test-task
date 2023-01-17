@@ -50,28 +50,34 @@ export const ArticleCard: React.FC<UserText> = (props) => {
               .sort((a, b) => {
                 let priorityA = 0;
                 let priorityB = 0;
+                const currentSummaryA =
+                  a.summary.length > 100
+                    ? a.summary.slice(0, 100)
+                    : a.summary;
+                const currentSummaryB =
+                  b.summary.length > 100 ? b.summary.slice(0, 100) : b.summary;
+                
                 const userTextLowerCase = userText.toLowerCase();
 
                 if (a.title.toLowerCase().includes(userTextLowerCase)) {
                   priorityA = 0;
-                } else if (
-                  a.summary.toLowerCase().includes(userTextLowerCase)
-                ) {
+                } else if (currentSummaryA.toLowerCase().includes(userTextLowerCase)) {
                   priorityA = 1;
                 }
 
                 if (b.title.toLowerCase().includes(userTextLowerCase)) {
                   priorityB = 0;
-                } else if (
-                  b.summary.toLowerCase().includes(userTextLowerCase)
-                ) {
+                } else if (currentSummaryB.toLowerCase().includes(userTextLowerCase)) {
                   priorityB = 1;
                 }
 
                 return priorityA - priorityB;
               })
-              .map(({ id, imageUrl, summary, title, publishedAt }) => {
-                const result = priorityText(title, summary, userText);
+            .map(({ id, imageUrl, summary, title, publishedAt }) => {
+                 const currentSummary =
+                   summary.length > 100 ? summary.slice(0, 100) : summary;
+              
+                const result = priorityText(title, currentSummary, userText);
 
                 if (result === 0) {
                   return (
@@ -79,7 +85,7 @@ export const ArticleCard: React.FC<UserText> = (props) => {
                       id={id}
                       key={id}
                       imageUrl={imageUrl}
-                      summary={summary}
+                      summary={currentSummary}
                       title={title}
                       publishedAt={publishedAt}
                       userText={userText}
@@ -91,7 +97,7 @@ export const ArticleCard: React.FC<UserText> = (props) => {
                       id={id}
                       key={id}
                       imageUrl={imageUrl}
-                      summary={summary}
+                      summary={currentSummary}
                       title={title}
                       publishedAt={publishedAt}
                       userText={userText}
@@ -101,12 +107,14 @@ export const ArticleCard: React.FC<UserText> = (props) => {
                 return null;
               })
           : articleData.map(({ id, imageUrl, summary, title, publishedAt }) => {
+            const currentSummary =
+              summary.length > 100 ? summary.slice(0, 100) : summary;
               return (
                 <ArticleCardItem
                   id={id}
                   key={id}
                   imageUrl={imageUrl}
-                  summary={summary}
+                  summary={currentSummary}
                   title={title}
                   publishedAt={publishedAt}
                   userText={userText}
